@@ -6,7 +6,7 @@
 
     <div class="col-sm-12">
       <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"
-        [(ngModel)]="usuario.nome" required #nome="ngModel" [class.is-invalid]="!nome.valid && nome.touched" />
+        [(ngModel)]="usuario.nome" required #nome="ngModel" [ngClass]="aplicaCssErro(nome)" />
       <!--div>{{ nome.className }}</div-->
       <!--div *ngIf="!nome.valid && nome.touched" class="alert alert-danger" role="alert">Nome é obrigatório</div-->
       <div class="invalid-feedback">Nome é obrigatório</div>
@@ -18,7 +18,7 @@
     </div>
     <div class="col-sm-12">
       <input type="text" class="form-control" id="email" name="email" placeholder="nome@email.com"
-      [ngModel]="usuario.email" required email #email="ngModel" [class.is-invalid]="!email.valid && email.touched" />
+      [ngModel]="usuario.email" required email #email="ngModel" [ngClass]="aplicaCssErro(email)" />
       <div class="invalid-feedback">Digite um e-mail válido</div>
     </div>
   </div>
@@ -26,12 +26,12 @@
   <div class="form-group has-validation row">
     <div class="col-md-3">
       <label for="cep" class="control-label">CEP</label>
-      <input type="text" class="form-control" id="cep" name="cep" ngModel required #cep="ngModel" [class.is-invalid]="!cep.valid && cep.touched" />
+      <input type="text" class="form-control" id="cep" name="cep" ngModel required #cep="ngModel" [ngClass]="aplicaCssErro(cep)" />
       <div class="invalid-feedback">CEP é obrigatório</div>
     </div>
     <div class="col-md-3">
       <label for="numero" class="control-label">Número</label>
-      <input type="text" class="form-control" id="numero" name="numero" ngModel required #numero="ngModel" [class.is-invalid]="!numero.valid && numero.touched" />
+      <input type="text" class="form-control" id="numero" name="numero" ngModel required #numero="ngModel" [ngClass]="aplicaCssErro(numero)" />
       <div class="invalid-feedback">Número é obrigatório</div>
     </div>
     <div class="col-md-6">
@@ -47,7 +47,7 @@
 
     <div class="col-sm-12">
       <input type="text" class="form-control" id="rua" name="rua" readonly
-        ngModel required #rua="ngModel" [class.is-invalid]="!rua.valid && rua.touched" />
+        ngModel required #rua="ngModel" [ngClass]="aplicaCssErro(rua)" />
       <div class="invalid-feedback">Rua é obrigatório</div>
     </div>
   </div>
@@ -55,17 +55,17 @@
   <div class="form-group row">
     <div class="col-md-5">
       <label for="bairro" class="control-label">Bairro</label>
-      <input type="text" class="form-control" id="bairro" name="bairro" ngModel required #bairro="ngModel" [class.is-invalid]="!bairro.valid && bairro.touched" />
+      <input type="text" class="form-control" id="bairro" name="bairro" ngModel required #bairro="ngModel" [ngClass]="aplicaCssErro(bairro)" />
       <div class="invalid-feedback">Bairro é obrigatório</div>
     </div>
     <div class="col-md-4">
       <label for="cidade" class="control-label">Cidade</label>
-      <input type="text" class="form-control" id="cidade" name="cidade" ngModel required #cidade="ngModel" [class.is-invalid]="!cidade.valid && cidade.touched" />
+      <input type="text" class="form-control" id="cidade" name="cidade" ngModel required #cidade="ngModel" [ngClass]="aplicaCssErro(cidade)" />
       <div class="invalid-feedback">Cidade é obrigatório</div>
     </div>
     <div class="col-md-3">
       <label for="estado" class="control-label">Estado</label>
-      <input type="text" class="form-control" id="estado" name="estado" ngModel required #estado="ngModel" [class.is-invalid]="!estado.valid && estado.touched" />
+      <input type="text" class="form-control" id="estado" name="estado" ngModel required #estado="ngModel" [ngClass]="aplicaCssErro(estado)" />
       <div class="invalid-feedback">Estado é obrigatório</div>
     </div>
   </div>
