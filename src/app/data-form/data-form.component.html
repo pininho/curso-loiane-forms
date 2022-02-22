@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-sm-12">
-      <input type="text" class="form-control" id="nome" formControlName="nome" placeholder="Nome" />
+      <input type="text" class="form-control" id="nome" formControlName="nome" placeholder="Nome" [ngClass]="aplicaCssErro('nome')" />
       <div class="invalid-feedback">Nome é obrigatório</div>
     </div>
   </div>
@@ -15,7 +15,8 @@
       <label for="email" class="form-label">Email</label>
     </div>
     <div class="col-sm-12">
-      <input type="text" class="form-control" id="email" formControlName="email" placeholder="nome@email.com" />
+      <input type="text" class="form-control" id="email" formControlName="email" placeholder="nome@email.com" [ngClass]="aplicaCssErro('email')" />
+      <div class="valid-feedback">E-mail válido!</div>
       <div class="invalid-feedback">Digite um e-mail válido</div>
     </div>
   </div>
