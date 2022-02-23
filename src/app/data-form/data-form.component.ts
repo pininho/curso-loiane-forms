@@ -20,21 +20,27 @@ export class DataFormComponent implements OnInit {
   ngOnInit(): void {
     /*this.formulario = new FormGroup({
       nome: new FormControl(null),
-      email: new FormControl(null)
-    });*/
+      email: new FormControl(null),
+      endereco: new FormGroup({
+        cep: new FormControl(null)
+        //...
+      })
+    }); */
 
     this.formulario = this.formBuilder.group({
       //Exemplos validação:
       //[null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
       nome: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
-      cep: [null, Validators.required],
-      numero: [null, Validators.required],
-      complemento: [null], //Não é obrigatório o complemento
-      rua: [null, Validators.required],
-      bairro: [null, Validators.required],
-      cidade: [null, Validators.required],
-      estado: [null, Validators.required]
+      endereco: this.formBuilder.group({
+        cep: [null, Validators.required],
+        numero: [null, Validators.required],
+        complemento: [null], //Não é obrigatório o complemento
+        rua: [null, Validators.required],
+        bairro: [null, Validators.required],
+        cidade: [null, Validators.required],
+        estado: [null, Validators.required]
+      })
     });
   }
 
