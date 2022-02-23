@@ -27,7 +27,14 @@ export class DataFormComponent implements OnInit {
       //Exemplos validação:
       //[null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
       nome: [null, Validators.required],
-      email: [null, [Validators.required, Validators.email]]
+      email: [null, [Validators.required, Validators.email]],
+      cep: [null, Validators.required],
+      numero: [null, Validators.required],
+      complemento: [null], //Não é obrigatório o complemento
+      rua: [null, Validators.required],
+      bairro: [null, Validators.required],
+      cidade: [null, Validators.required],
+      estado: [null, Validators.required]
     });
   }
 
@@ -48,7 +55,7 @@ export class DataFormComponent implements OnInit {
     this.formulario.reset();
   }
 
-  aplicaCssErro(campo) {
+  aplicaCssErro(campo: string) {
     return {'is-invalid': !this.formulario.get(campo).valid && this.formulario.get(campo).touched,
             'is-valid': this.formulario.get(campo).valid && this.formulario.get(campo).touched};
   }
