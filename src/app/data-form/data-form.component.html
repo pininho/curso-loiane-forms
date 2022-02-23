@@ -26,7 +26,8 @@
     <div class="form-group has-validation row">
       <div class="col-md-3">
         <label for="cep" class="control-label">CEP</label>
-        <input type="text" class="form-control" id="cep" [ngClass]="aplicaCssErro('endereco.cep')" formControlName="cep" />
+        <input type="text" class="form-control" id="cep" [ngClass]="aplicaCssErro('endereco.cep')" formControlName="cep"
+        (blur)="consultaCEP()" />
         <div class="invalid-feedback">CEP é obrigatório</div>
       </div>
       <div class="col-md-3">
