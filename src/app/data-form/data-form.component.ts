@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
@@ -20,7 +21,8 @@ import { EstadosBr } from './../shared/models/estados-br';
 })
 export class DataFormComponent implements OnInit {
   formulario: FormGroup;
-  estados: EstadosBr[];
+  //estados: EstadosBr[];
+  estados: Observable<EstadosBr[]>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,6 +32,9 @@ export class DataFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    this.estados = this.dropdownService.getEstadosBr();
+
     /*this.formulario = new FormGroup({
       nome: new FormControl(null),
       email: new FormControl(null),
@@ -39,10 +44,10 @@ export class DataFormComponent implements OnInit {
       })
     }); */
 
-    this.dropdownService.getEstadosBr().subscribe((dados: EstadosBr[]) => {
+    /*this.dropdownService.getEstadosBr().subscribe((dados: EstadosBr[]) => {
       this.estados = dados;
       console.log(dados);
-    });
+    });*/
 
     this.formulario = this.formBuilder.group({
       //Exemplos validação:
@@ -78,7 +83,7 @@ export class DataFormComponent implements OnInit {
           (error: any) => alert('erro')
         );
     } else {
-      this.verificaValidacoesForm(this.formulario);
+      //this.verificaValidacoesForm(this.formulario);
     }
   }
 
@@ -88,7 +93,7 @@ export class DataFormComponent implements OnInit {
       const controle = formGroup.get(campo);
       controle.markAsDirty();
       if (controle instanceof FormGroup) {
-        this.verificaValidacoesForm(controle);
+        //this.verificaValidacoesForm(controle);
       }
     });
   }
@@ -100,12 +105,12 @@ export class DataFormComponent implements OnInit {
   aplicaCssErro(campo: string) {
     return {
       'is-invalid':
-        (!this.formulario.get(campo).valid &&
-          this.formulario.get(campo).touched) ||
-        this.formulario.get(campo).dirty,
+        !this.formulario.get(campo).valid &&
+          this.formulario.get(campo).touched,// ||
+        //this.formulario.get(campo).dirty,
       'is-valid':
-        (this.formulario.get(campo).valid &&
-          this.formulario.get(campo).touched) ||
+        this.formulario.get(campo).valid &&
+          this.formulario.get(campo).touched ||
         this.formulario.get(campo).dirty,
     };
   }

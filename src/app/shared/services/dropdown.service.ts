@@ -11,7 +11,7 @@ export class DropdownService {
 
   getEstadosBr() {
     return this.http
-      .get('assets/dados/estadosbr.json')
+      .get<EstadosBr[]>('assets/dados/estadosbr.json')
       .pipe();
   }
 }
