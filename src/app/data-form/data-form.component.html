@@ -75,20 +75,29 @@
 
   </div>
 
-  <div class="form-group">
+  <div class="form-group row">
     <div class="col-md-3">
       <label for="cargo" class="control-label">Cargo</label>
       <select class="form-control" id="cargo" [ngClass]="aplicaCssErro('cargo')" formControlName="cargo" [compareWith]="compararCargos">
         <option *ngFor="let cargo of cargos" [ngValue]="cargo">{{ cargo.desc }}</option>
       </select>
     </div>
+
+    <div class="col-md-3">
+      <label for="tecnologias" class="control-label">Tecnologias</label>
+      <select multiple class="form-control" id="tecnologias" [ngClass]="aplicaCssErro('tecnologias')" formControlName="tecnologias">
+        <option *ngFor="let tecnologia of tecnologias" [value]="tecnologia.nome">{{ tecnologia.desc }}</option>
+      </select>
+    </div>
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
 
-  <button type="submit" class="btn" (click)="resetar()">Cancelar</button>
+  <button type="submit" class="btn btn-default" (click)="resetar()">Cancelar</button>
 
-  <button type="submit" class="btn" (click)="setarCargo()">Cargo</button>
+  <button type="submit" class="btn btn-info" (click)="setarCargo()">Cargo</button>
+
+  <button type="submit" class="btn btn-info" (click)="setarTecnologias()">Tecnologias</button>
 
   <app-form-debug [form]="formulario"></app-form-debug>
 </form>
