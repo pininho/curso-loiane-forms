@@ -168,21 +168,55 @@
       <div id="newsletter" class="row">
         <div class="col-sm-4" *ngFor="let item of newsletterOp">
           <label class="radio-inline">
-            <input type="radio" [value]="item.valor" formControlName="newsletter" id="" /> {{ item.desc }}
+            <input
+              type="radio"
+              [value]="item.valor"
+              formControlName="newsletter"
+              id=""
+            />
+            {{ item.desc }}
           </label>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group row">
     <div class="col-md-3">
       <div class="checkbox">
         <label class="checkbox-inline" [ngClass]="aplicaCssErro('termos')">
-          <input type="checkbox" formControlName="termos" class="form-check-input" [ngClass]="aplicaCssErro('termos')"> Aceito os termos.
+          <input
+            type="checkbox"
+            formControlName="termos"
+            class="form-check-input"
+            [ngClass]="aplicaCssErro('termos')"
+          />
+          Aceito os termos.
         </label>
-        <div class="invalid-feedback">
-          Você deve aceitar os termos
+        <div class="invalid-feedback">Você deve aceitar os termos</div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <label for="frameworks">Frameworks</label>
+      <div id="frameworks" class="row">
+        <div
+          class="checkbox"
+          class="col-sm-4"
+          formArrayName="frameworks"
+          *ngFor="let item of formulario.get('frameworks')['controls']; let i = index;">
+          <label
+            class="checkbox-inline"
+            [ngClass]="aplicaCssErro('frameworks')"
+          >
+            <input
+              type="checkbox"
+              class="form-check-input"
+              [ngClass]="aplicaCssErro('frameworks')"
+              [formControlName]="i"
+            />
+            {{ frameworks[i] }}
+          </label>
         </div>
       </div>
     </div>
