@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadosBr } from './../shared/models/estados-br';
+import { FormValidations } from '../shared/form-validations';
 
 
 @Component({
@@ -79,7 +80,7 @@ export class DataFormComponent implements OnInit {
   buildFrameworks() {
 
     const values = this.frameworks.map(v => new FormControl(false));
-    return this.formBuilder.array(values);
+    return this.formBuilder.array(values, FormValidations.requiredMinCheckbox(1));
 
     /*return [
       new FormControl(false),
@@ -92,7 +93,6 @@ export class DataFormComponent implements OnInit {
   //get formData() {
   //  return <FormArray>this.formulario.get('frameworks');
   //}
-
 
   onSubmit() {
     console.log(this.formulario.value);
