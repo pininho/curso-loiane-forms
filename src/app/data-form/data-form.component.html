@@ -175,6 +175,19 @@
     </div>
   </div>
 
+  <div class="form-group">
+    <div class="col-md-3">
+      <div class="checkbox">
+        <label class="checkbox-inline" [ngClass]="aplicaCssErro('termos')">
+          <input type="checkbox" formControlName="termos" class="form-check-input" [ngClass]="aplicaCssErro('termos')"> Aceito os termos.
+        </label>
+        <div class="invalid-feedback">
+          Você deve aceitar os termos
+        </div>
+      </div>
+    </div>
+  </div>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 
   <button type="submit" class="btn btn-default" (click)="resetar()">
