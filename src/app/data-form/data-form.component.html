@@ -43,11 +43,12 @@
           type="text"
           class="form-control"
           id="cep"
-          [ngClass]="aplicaCssErro('endereco.cep')"
+          [ngClass]="verificaRequired('endereco.cep')"
           formControlName="cep"
           (blur)="consultaCEP()"
         />
-        <div class="invalid-feedback">CEP é obrigatório</div>
+        <div class="invalid-feedback" [hidden]="!formulario.get('endereco.cep').hasError('required')">CEP é obrigatório</div>
+        <div class="invalid-feedback" [hidden]="!formulario.get('endereco.cep').hasError('cepInvalido')">CEP é inválido</div>
       </div>
       <div class="col-md-3">
         <label for="numero" class="control-label">Número</label>
